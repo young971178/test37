@@ -5,13 +5,11 @@ import {
   ChevronDown,
   ChevronUp,
   AlertCircle,
-  FileSpreadsheet,
   Clock,
   Target,
   Calendar,
   CheckCircle2,
-  User,
-  ExternalLink
+  User
 } from 'lucide-react';
 
 interface HeaderNoticeProps {
@@ -21,14 +19,12 @@ interface HeaderNoticeProps {
   };
   currentAttempt?: number;
   maxAttempts?: number;
-  onSetAttempt?: (n: number) => void;
 }
 
-export const HeaderNotice: React.FC<HeaderNoticeProps> = ({
+const HeaderNotice: React.FC<HeaderNoticeProps> = ({
   examinee = { name: '손흥민', jobGroup: '제조직군' },
   currentAttempt = 1,
-  maxAttempts = 5,
-  onSetAttempt
+  maxAttempts = 5
 }) => {
   const [expanded, setExpanded] = useState(true);
   const remainingDays = 17;
@@ -37,7 +33,6 @@ export const HeaderNotice: React.FC<HeaderNoticeProps> = ({
 
   return (
     <header className="bg-slate-900 text-slate-100 border-b border-slate-800 shadow-md">
-      {/* Primary Header Title Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 bg-blue-600/20 text-blue-400 rounded-xl border border-blue-500/30">
@@ -58,9 +53,7 @@ export const HeaderNotice: React.FC<HeaderNoticeProps> = ({
           </div>
         </div>
 
-        {/* Status Badges & Toggle Notice Button */}
         <div className="flex flex-wrap items-center gap-2.5">
-          {/* Examinee Info Badge */}
           <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-900/40 rounded-lg border border-blue-700/60 text-xs">
             <User className="w-4 h-4 text-blue-400" />
             <div className="flex items-center gap-1.5 font-medium">
@@ -77,7 +70,6 @@ export const HeaderNotice: React.FC<HeaderNoticeProps> = ({
             </div>
           </div>
 
-          {/* 남은 응시기간 Badge */}
           <div className="flex items-center gap-2 px-3 py-1.5 bg-rose-950/60 rounded-lg border border-rose-500/50 text-xs">
             <Calendar className="w-3.5 h-3.5 text-rose-400" />
             <span className="text-slate-300 font-medium">남은 응시기간:</span>
@@ -86,7 +78,6 @@ export const HeaderNotice: React.FC<HeaderNoticeProps> = ({
             </span>
           </div>
 
-          {/* 남은 응시가능 횟수 Badge */}
           <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-950/60 rounded-lg border border-emerald-500/50 text-xs">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
             <span className="text-slate-300 font-medium">남은 응시기회:</span>
@@ -112,7 +103,6 @@ export const HeaderNotice: React.FC<HeaderNoticeProps> = ({
         </div>
       </div>
 
-      {/* Expandable Notice Panel */}
       {expanded && (
         <div className="bg-slate-800/90 border-t border-slate-700/80 px-4 sm:px-6 lg:px-8 py-4 animate-in slide-in-from-top-2 duration-200">
           <div className="max-w-7xl mx-auto text-xs bg-slate-900/80 p-4 rounded-xl border border-slate-700/80 shadow-inner space-y-3">
@@ -155,3 +145,11 @@ export const HeaderNotice: React.FC<HeaderNoticeProps> = ({
     </header>
   );
 };
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-slate-50">
+      <HeaderNotice />
+    </div>
+  );
+}
