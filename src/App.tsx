@@ -152,4 +152,8 @@ export default function App() {
       <HeaderNotice />
     </div>
   );
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
